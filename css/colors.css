@@ -1,0 +1,47 @@
+:root {
+    --background-color: #343434;
+    --foreground-color: #4e4e4e;
+    --border-color: #8F8F8F;
+    --text-color: white;
+
+    --button-fill-color: #2C2C2C;
+    --button-active-fill-color: #3b3b3b;
+    --button-border-color: #717171;
+    --button-border-hover-color: white;
+    --button-disabled-text-color: #8F8F8F;
+
+    --card-background-color: #343434;
+    --card-title-background-color: #4E4E4E;
+    --card-border-color: #8F8F8F;
+
+    --recording-btn-recording-color: rgb(82, 0, 0);
+    --recording-btn-recording-border-color: rgb(255, 0, 0);
+
+
+    --scrollbar-fill-color: #717171;
+    --scrollbar-fill-hover-color: white;
+
+    --scrubber-disabled-overlay-color: #0f0f0f;
+    --scrubber-disabled-text-color: #646464;
+
+    --scrubber-start-color: #1fc557;
+    --scrubber-end-color: #c51f1f;
+    --scrubber-head-color: #ebebeb;
+
+    --scrubber-active-start-color: #00ff55;
+    --scrubber-active-end-color: #ff0000;
+    --scrubber-active-head-color: #ffffff;
+
+    --input-fill-color: #4E4E4E;
+    --input-border-color: #8F8F8F;
+
+    --header-icon-success-color: #23e263;
+
+    --signal-bars-3-color: #23e263;
+    --signal-bars-2-color: #cfe223;
+    --signal-bars-1-color: #e23023;
+    --signal-bars-reconnecting-color: rgb(230, 113, 17);
+
+    --visualize-src-btn-selected-color: rgb(0, 82, 4);
+    --visualize-src-btn-selected-border-color: rgb(0, 209, 10);
+}

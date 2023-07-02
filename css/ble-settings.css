@@ -1,0 +1,59 @@
+.card>.card-body {
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.label-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.label-group > label {
+    flex-grow: 1;
+}
+
+#ble-device-select {
+    height: 165px;
+}
+
+/* Initial css to indicate user to press this button */
+@keyframes animate-refresh-devices-btn-initial {
+    0% {
+        border-color: var(--button-border-color);
+        background-color: var(--button-fill-color);
+    }
+
+    50% {
+        border-color: rgb(1, 221, 19);
+        background-color: rgb(0, 126, 10);
+    }
+
+    100% {
+        border-color: var(--button-border-color);
+        background-color: var(--button-fill-color);
+    }
+}
+
+.refresh-devices-btn-initial {
+    animation-name: animate-refresh-devices-btn-initial;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.refresh-devices-btn-initial:hover {
+    animation: none;
+    border-color: rgb(1, 221, 19);
+    background-color: rgb(0, 126, 10);
+}
+
+.button-group-horizontal {
+    align-items: center;
+}

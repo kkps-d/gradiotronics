@@ -1,0 +1,8 @@
+.about-section {
+    background-color: rgb(182, 182, 182);
+    color: rgb(51, 51, 51);
+    text-align: center;
+    padding: 5px 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}

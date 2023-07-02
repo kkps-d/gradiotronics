@@ -1,0 +1,235 @@
+.header {
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    background-color: var(--foreground-color);
+    color: var(--text-color);
+
+    /* box-shadow: 0px 1px 14px 0px rgba(0,0,0,0.75); */
+
+    /* Electron drag zone */
+    /* -webkit-app-region: drag;
+    padding-right: 137px; */
+}
+
+/* .header>.logo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    background-color: white;
+    color: black;
+    font-weight: 900;
+    font-size: 0.7rem;
+} */
+
+.logo {
+    height: 36px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo > img {
+    object-fit: contain;
+    height: 30px;
+    width: 150px;
+}
+
+/* .header>.logo>div {
+    line-height: 10px;
+} */
+
+.header>.interactive-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    /* border-right: 1px solid var(--border-color); */
+}
+
+.header .icon.icon-success {
+    color: var(--header-icon-success-color);
+}
+
+#device-status-icon.show-serial>*:last-child {
+    display: none;
+}
+
+#device-status-icon.show-signal-bars>*:first-child {
+    display: none;
+}
+
+.interactive-section>.title {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.interactive-section>.icon {
+    font-size: 1rem;
+}
+
+#record-interactive {
+    flex-grow: 1;
+}
+
+#record-interactive>.monospace-box {
+    flex-grow: 1;
+}
+
+.header>.header-divider {
+    width: 1px;
+    height: 60%;
+    background-color: var(--border-color);
+}
+
+.header>.header-grow {
+    flex-grow: 1;
+}
+
+.header>.settings {
+    width: 46px;
+    padding-top: 1px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* Electron no-drag zone */
+    -webkit-app-region: no-drag;
+}
+
+.header>.settings:hover {
+    transition: 100ms;
+    background-color: #666666;
+}
+
+.header>.settings:active {
+    background-color: #7c7c7c;
+}
+
+.signal-bars {
+    height: 16px;
+    /* width: 20px; */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 1px;
+    /* Electron no-drag zone, too allow hover to check dBm */
+    -webkit-app-region: no-drag;
+}
+
+.signal-bars>div:nth-child(1) {
+    width: 4px;
+    height: 33%;
+    /* border: 1px solid green; */
+}
+
+.signal-bars>div:nth-child(2) {
+    width: 4px;
+    height: 66%;
+    /* border: 1px solid green; */
+}
+
+.signal-bars>div:nth-child(3) {
+    width: 4px;
+    height: 100%;
+    /* border: 1px solid green; */
+}
+
+.signal-bars.signal-bars-3>* {
+    background-color: var(--signal-bars-3-color);
+}
+
+.signal-bars.signal-bars-2>* {
+    background-color: var(--signal-bars-2-color);
+}
+
+.signal-bars.signal-bars-2>div:nth-child(3) {
+    filter: brightness(60%);
+}
+
+.signal-bars.signal-bars-1>* {
+    background-color: var(--signal-bars-1-color);
+}
+
+.signal-bars.signal-bars-1>div:nth-last-child(-n+2) {
+    filter: brightness(60%);
+}
+
+.signal-bars.signal-bars-reconnecting>div:nth-child(1) {
+    animation: animate-reconnecting 2s infinite linear;
+}
+
+.signal-bars.signal-bars-reconnecting>div:nth-child(2) {
+    animation: animate-reconnecting 2s infinite linear;
+    animation-delay: 0.3s;
+}
+
+.signal-bars.signal-bars-reconnecting>div:nth-child(3) {
+    animation: animate-reconnecting 2s infinite linear;
+    animation-delay: 0.6s;
+}
+
+@keyframes animate-reconnecting {
+    0% {
+        background-color: unset;
+    }
+
+    25% {
+        background-color: var(--signal-bars-reconnecting-color);
+    }
+
+    50% {
+        background-color: unset;
+    }
+
+    100% {
+        background-color: unset;
+    }
+}
+
+.visualize-src-btn.visualize-src-btn-selected {
+    background-color: var(--visualize-src-btn-selected-color);
+    border: 1px solid var(--visualize-src-btn-selected-border-color);
+}
+
+.btn-recording {
+    animation: animate-recording-btn 4s infinite linear;
+    /* color: red; */
+}
+
+@keyframes animate-recording-btn {
+    0% {
+        border: 1px solid var(--button-border-color);
+        background-color: var(--button-fill-color);
+    }
+
+    20% {
+        border: 1px solid var(--recording-btn-recording-border-color);
+        background-color: var(--recording-btn-recording-color);
+    }
+    
+    80% {
+        border: 1px solid var(--recording-btn-recording-border-color);
+        background-color: var(--recording-btn-recording-color);
+    }
+
+    100% {
+        border: 1px solid var(--button-border-color);
+        background-color: var(--button-fill-color);
+    }
+}

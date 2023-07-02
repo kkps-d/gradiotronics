@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradiotronics</title>
+    <link rel="stylesheet" href="./css/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="./css/colors.css" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/card.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/body.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <link rel="stylesheet" href="./css/foot-heatmap.css" />
+    <link rel="stylesheet" href="./css/visual-scrubber.css" />
+    <link rel="stylesheet" href="./css/playback-controls.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="message-overlay"></div>
+      <div class="header">
+        <div class="logo">
+          <img src="./resources/logo.png" alt="" srcset="" />
+        </div>
+        <div id="file-interactive" class="interactive-section">
+          <div class="icon" id="file-icon">
+            <i class="bi bi-file-earmark-text-fill"></i>
+          </div>
+          <div class="title" id="filename-title">No file loaded</div>
+          <div class="button-group-horizontal">
+            <button title="Load a file from your computer" id="load-file-btn">
+              <i class="bi bi-file-earmark-arrow-up"></i>
+            </button>
+            <button
+              title="Visualize loaded file"
+              class="visualize-src-btn"
+              id="visualize-file"
+            >
+              <i class="bi bi-graph-up"></i>
+            </button>
+            <button title="Load sample data" id="load-sample-data-btn">
+              Sample data
+            </button>
+          </div>
+        </div>
+        <div class="header-divider"></div>
+        <div id="device-interactive" class="interactive-section">
+          <div class="icon show-serial" id="device-status-icon">
+            <i id="serial-icon" class="bi bi-cpu-fill"></i>
+            <div
+              title="-45 dBm"
+              id="signal-bars"
+              class="signal-bars signal-bars-reconnecting"
+            >
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="title" id="device-status-text">No device connected</div>
+          <div class="button-group-horizontal">
+            <button
+              style="display: none"
+              title="Connect via serial"
+              id="connect-serial-btn"
+            >
+              <i class="bi bi-usb-symbol"></i>
+            </button>
+            <button
+              title="Disconnect from device"
+              class="hidden"
+              id="disconnect-ble-btn"
+            >
+              <i class="bi bi-x-circle"></i>
+            </button>
+            <div class="input-group">
+              <button
+                title="Connect via Bluetooth Low Energy"
+                id="connect-ble-btn"
+              >
+                <i class="bi bi-bluetooth"></i>
+              </button>
+            </div>
+            <button
+              title="Visualize live data"
+              class="visualize-src-btn visualize-src-btn-selected"
+              id="visualize-live"
+            >
+              <i class="bi bi-graph-up"></i>
+            </button>
+          </div>
+        </div>
+        <div class="header-divider"></div>
+        <div id="record-interactive" class="interactive-section">
+          <div class="icon"><i class="bi bi-record-btn"></i></div>
+          <div class="title" id="record-title">Record</div>
+          <div class="button-group-horizontal">
+            <button title="Start recording live data" id="record-btn">
+              <i class="bi bi-record-circle-fill"></i>
+            </button>
+            <button title="Save raw data to file" id="save-recorded-btn">
+              <i class="bi bi-file-earmark-arrow-down"></i>
+            </button>
+            <button title="Clear recorded data" id="clear-recorded-btn">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+            <button
+              title="Visualize recorded data"
+              class="visualize-src-btn"
+              id="visualize-recorded"
+            >
+              <i class="bi bi-graph-up"></i>
+            </button>
+          </div>
+          <!-- <div class="monospace-box" id="record-info-box">
+          <div id="line-1">Ready</div>
+          <div id="line-2">...</div>
+        </div> -->
+        </div>
+        <!-- <div class="header-grow"></div> -->
+        <!-- <div class="settings"><i class="bi bi-gear"></i></div> -->
+      </div>
+      <div class="body">
+        <div class="card card-heatmap">
+          <div class="title-bar">
+            <div class="title">Heatmap</div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="show-average" />
+              <label for="show-average">Show average</label>
+            </div>
+          </div>
+          <div class="card-body">
+            <div id="foot-heatmap"></div>
+          </div>
+        </div>
+        <div class="card card-graphs">
+          <div class="title-bar">
+            <div class="title">Graphs</div>
+            <div class="close-button"><i class="bi bi-x-lg"></i></div>
+          </div>
+          <div class="card-body">
+            <div id="main-graph-container">
+              <canvas id="main-graph"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div id="visual-scrubber"></div>
+        <div id="playback-controls" class="playback-controls disabled">
+          <div id="timestamps">
+            <div title="minutes : seconds . milliseconds" id="t-left">
+              00:00;000
+            </div>
+            <div title="minutes : seconds . milliseconds" id="t-center">
+              00:00;000
+            </div>
+            <div title="minutes : seconds . milliseconds" id="t-right">
+              00:00;000
+            </div>
+          </div>
+          <div id="buttons">
+            <button title="Trim selected region" id="trim-selection">
+              <i class="bi bi-scissors"></i>
+            </button>
+            <button title="Skip backwards" id="skip-backward">
+              <i class="bi bi-skip-backward-fill"></i>
+            </button>
+            <button title="Play/Pause" id="play-button" class="paused">
+              <i class="bi bi-pause-fill"></i>
+              <i class="bi bi-play-fill"></i>
+            </button>
+            <button title="Skip forwards" id="skip-forward">
+              <i class="bi bi-skip-forward-fill"></i>
+            </button>
+            <select title="Change playback speed" id="playback-rate">
+              <option value="0.25">1/4x</option>
+              <option value="0.5">1/2x</option>
+              <option selected value="1">1x</option>
+              <option value="2">2x</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="about-section">
+        <span>Senior project: Team Gradiotronics</span>
+        •
+        <span>Chelsea Igtanloc</span>
+        •
+        <span>Kaung Khant Pyae Sone</span>
+        •
+        <span>Joaquin Gonzalez</span>
+        •
+        <span>Vicky Guan</span>
+        •
+        <span>Class of 2023</span>
+      </div>
+    </div>
+
+    <script src="./js/chart.umd.js"></script>
+    <script src="./js/heatmap.min.js"></script>
+    <script type="module" src="./js/main-window/main.js"></script>
+    <script type="module" src="./js/main-window/bluetooth.js"></script>
+    <script type="module" src="./js/main-window/serial.js"></script>
+    <script type="module" src="./js/main-window/visuals.js"></script>
+    <script type="module" src="./js/main-window/data.js"></script>
+  </body>
+</html>

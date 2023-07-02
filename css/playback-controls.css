@@ -1,0 +1,73 @@
+#play-button > i:nth-child(1) {
+    display: initial;
+}
+
+#play-button > i:nth-child(2) {
+    display: none;
+}
+
+#play-button.paused > i:nth-child(1) {
+    display: none;
+}
+
+#play-button.paused > i:nth-child(2) {
+    display: initial;
+}
+
+.playback-controls {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+
+}
+
+.playback-controls > #buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.playback-controls.disabled {
+    color: #777;
+}
+
+.playback-controls.disabled button,.playback-controls.disabled select {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #0f0f0f;
+    color: #777;
+}
+
+#playback-rate {
+    appearance: none;
+}
+
+#play-button, #skip-backward, #skip-forward {
+    /* height: 32px; */
+    font-size: 1.1rem;
+}
+
+#timestamps {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+#timestamps > div {
+    flex-grow: 1;
+    display: flex;
+    padding: 2px;
+}
+
+#timestamps > #t-center {
+    justify-content: center;
+}
+
+#timestamps > #t-right {
+    justify-content: right;
+}

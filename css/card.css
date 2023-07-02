@@ -1,0 +1,59 @@
+.card {
+    background-color: var(--card-background-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.card.card-standalone {
+    height: 100%;
+}
+
+.card > .title-bar {
+    align-items: center;
+    background-color: var(--card-title-background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    height: 32px;
+}
+
+.card.card-standalone > .title-bar {
+    -webkit-app-region: drag;
+}
+
+.card > .title-bar > .title {
+    flex-grow: 1;
+    margin-left: 12px;
+    font-size: 0.9rem;
+}
+
+.card.card-closable > .title-bar > .close-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 12px;
+    width: 46px;
+    height: 100%;
+}
+
+.card > .title-bar > .close-button {
+    display: none;
+}
+
+.card > .title-bar > .close-button:hover {
+    background-color: #666666;
+}
+
+.card > .title-bar > .close-button:active {
+    background-color: #7c7c7c;
+}
+
+.card > .card-body {
+    padding: 10px;
+    flex-grow: 1;
+}
